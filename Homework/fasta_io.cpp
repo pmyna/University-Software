@@ -51,7 +51,7 @@ int main()
     }
 
     //Ins .txt File speichern
-    fSave << temp_head << temp_seq; //loop funktiert nur für den ersten Absatz, nicht für den zweiten; Übergabe leerer Parameter
+    fSave << temp_head << temp_seq; //loop funktiert nur für den ersten Absatz, nicht für den zweiten; Übergabe leerer Parameter -> Loop Reihenfolge?
     }
     fLoad.close();
     fSave.close();

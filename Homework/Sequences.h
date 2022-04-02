@@ -43,7 +43,6 @@ ostream &operator<<(ostream &o, Sequence &i_seq){
     return o << "Sequence: " << i_seq << '\n';
 }
 
-/* 
 class Read{
     public:
         Read(const Header &head, const Sequence &seq);
