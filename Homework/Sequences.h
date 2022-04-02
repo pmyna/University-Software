@@ -1,3 +1,6 @@
+//VERWORFEN
+
+/*
 #ifndef SEQUENCES_H
 #define SEQUENCES_H
 #include<iostream>
@@ -56,6 +59,7 @@ class Read{
 
 ostream &operator<<(ostream &o, Read &i_read){
     return o << i_read.getHeader() << '\n' << i_read.getSequence() << '\n';
-}*/
+}
 
 #endif
+*/

@@ -4,10 +4,9 @@
 #include "Reads.h"
 using namespace std;
 
-//Stoße mit getline immer wieder an die Grenzen der Delimeter, da Zeilen nicht mehrfach oder stückweise eingelesen werden können
-// Zusammensetzen der Sequenz-Zeilen gestaltet sich schwierig, da jede Zeile mit \n beginnt, außer die erste Zeile
-// Implementierung weiterer fasta-Strukuren um multi-fasta einlesen zu können
-
+// Zeilen können mit getline nicht mehrfach oder stückweise eingelesen werden
+// Zusammensetzen der Sequenz-Zeilen -> jede Zeile beginnt mit \n außer die erste Zeile
+// Implementierung weiterer fasta-Strukuren um multi-fasta einlesen zu können ausstehend
 
 
 int main()
@@ -52,7 +51,7 @@ int main()
     }
 
     //Ins .txt File speichern
-    fSave << temp_head << temp_seq; //loop funktiert nur für den ersten Absatz, nicht für den zweiten
+    fSave << temp_head << temp_seq; //loop funktiert nur für den ersten Absatz, nicht für den zweiten; Übergabe leerer Parameter
     }
     fLoad.close();
     fSave.close();

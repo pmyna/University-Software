@@ -1,11 +1,14 @@
+// Idee: Header & zugehörige Sequence als ein Read zu speichern und gemeinsam an das .txt File übergeben und dort einlesen
+// Scheitere am Auslesen von Reads, da ein string übergeben werden muss und Reads als Header/Sequence definiert sind
+// Verwefen der Idee Reads
+// Verwerfen der Sequences.h und Sequences.cpp, da nicht kompilierbar [ld: symbol(s) not found for architecture x86_64 clang: error: linker command failed with exit code 1 (use -v to see invocation)]
+
+/* VERWORFEN
+
 #include <iostream>
 #include "Sequences.h"
 using namespace std;
 
-// Idee: Header & zugehörige Sequence als ein Read zu speichern und gemeinsam an das .txt File übergeben und dort einlesen
-// Scheitere am Auslesen der Klassen von Read, da ein string übergeben werden muss
-// Idee 2: Reads als Liste von Vektoren mit Header/Sequences -> gleiches Problem 
-// Sequences.h verworfen, da kompilen nicht möglich
 
 Header::Header(){}
 
@@ -22,8 +25,9 @@ Sequence::Sequence(){}
 void Sequence::addSequence(const string &i_seq){seq.append(i_seq);}
 
 
-/*Read::Read(const Header &head, const Sequence &seq):
+Read::Read(const Header &head, const Sequence &seq):
             read_header(head), read_seq(seq){}
 
 string Read::getHeader(){return read_head);} //Wie Header als string returnen?
-string Read::getSequence(){return read_seq;}*/
+string Read::getSequence(){return read_seq;}
+*/
