@@ -1,57 +1,60 @@
 #include <ostream>
 #include <fstream>
 #include <sstream>
-#include "Sequences.h"
+#include "Reads.h"
 using namespace std;
 
-/* 
--) Compilieren nicht möglich: 
-ld: symbol(s) not found for architecture x86_64
-clang: error: linker command failed with exit code 1 (use -v to see invocation) 
--) Programm kann nicht getestet werden; 
--) Debugging startet ebenfalls nicht;
-*/
+//Stoße mit getline immer wieder an die Grenzen der Delimeter, da Zeilen nicht mehrfach oder stückweise eingelesen werden können
+// Zusammensetzen der Sequenz-Zeilen gestaltet sich schwierig, da jede Zeile mit \n beginnt, außer die erste Zeile
+// Implementierung weiterer fasta-Strukuren um multi-fasta einlesen zu können
+
+
 
 int main()
 {
-    //Aus dem Fasta auslesen
-    ifstream fLoad("AsianElefant_CytochromeB.fasta", ofstream::in);
+  ifstream fLoad("AsianElefant_CytochromeB.fasta", ofstream::in);
+  ofstream fSave("Reads.txt", ofstream::out);
+  string strFile;
+  bool loop = true;
 
-    while(!fLoad.eof())
+  while(!fLoad.eof())
+  {
+    Header temp_head;
+    Sequence temp_seq;
+
+    getline(fLoad, strFile);
+
+    if(strFile[0] == '>') //Einfachere Lösung substrings aus der getline zu bekommen?
     {
-      Header temp_head;
-      Sequence temp_seq;
-      string strField;
-      getline(fLoad, strField);
+      size_t pos1 = strFile.find(' ');
+      string i_ncbi = strFile.substr(1, pos1-1);
+      temp_head.setNCBI(i_ncbi);
 
-        if(strField[0] == '>')
-        {
-          while(!strField[0])
-            getline(fLoad, strField, '|');
-            string i_ncbi = strField;
-            temp_head.setNCBI(i_ncbi);
-          
-          getline(fLoad, strField, '[');
-          string i_name = strField;
-          temp_head.setName(i_name);
+      size_t pos2 = strFile.find('[');
+      string i_name = strFile.substr(pos1+1, pos2-(pos1+2));
+      temp_head.setName(i_name);
 
-          getline(fLoad, strField, ']');
-          string i_species = strField;
-          temp_head.setSpecies(i_species);
-        }
-
-        while(!strField.empty())
-          {
-            temp_seq.addSequence(strField);
-          }
-        fLoad.close();
-
-    //In ein .txt File einlesen
-    ofstream fSave("Reads.txt", ofstream::out);
-
-    fSave << temp_head << temp_seq;
-    fSave.close();
+      size_t pos3 = strFile.find(']');
+      string i_species = strFile.substr(pos2+1, pos3-(pos2+1));
+      temp_head.setSpecies(i_species);
     }
 
+    while(loop) // Wie unterscheiden zwischen leerer Zeile \n und Zeile mit \nSEQUENZ?
+    {
+    getline(fLoad, strFile, '\r');
+    if(strFile[0] == '\n')
+        strFile = strFile.substr(1);
+    if(!strFile.size())
+      loop = false;
+      break;
+    string i_seq = strFile;
+    temp_seq.addSequence(i_seq);
+    }
+
+    //Ins .txt File speichern
+    fSave << temp_head << temp_seq; //loop funktiert nur für den ersten Absatz, nicht für den zweiten
+    }
+    fLoad.close();
+    fSave.close();
     return 0;
 }

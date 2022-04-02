@@ -40,10 +40,6 @@ ostream &operator<<(ostream &o, Sequence &i_seq){
     return o << "Sequence: " << i_seq << '\n';
 }
 
-// Idee: Header & zugehörige Sequence als ein Read zu speichern und gemeinsam an das .txt File übergeben und dort einlesen
-// Scheitere am Auslesen der Klassen von Read, da ein string übergeben werden muss
-// Idee 2: Reads als Liste von Vectoren mit Header/Sequences -> gleiches Problem 
-
 /* 
 class Read{
     public:

@@ -1,9 +1,11 @@
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <vector>
 #include "Sequences.h"
 using namespace std;
+
+// Idee: Header & zugehörige Sequence als ein Read zu speichern und gemeinsam an das .txt File übergeben und dort einlesen
+// Scheitere am Auslesen der Klassen von Read, da ein string übergeben werden muss
+// Idee 2: Reads als Liste von Vektoren mit Header/Sequences -> gleiches Problem 
+// Sequences.h verworfen, da kompilen nicht möglich
 
 Header::Header(){}
 
