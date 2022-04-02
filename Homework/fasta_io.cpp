@@ -7,32 +7,46 @@ using namespace std;
 
 int main()
 {
-    Person Michael("Michael Mustermann", 55);
-    Person Lisa("Lisa Nordpork", 34);
-
-    //Aus dem File auslesen
-    ifstream fLoad("data.txt", ofstream::in);
+    //Aus dem Fasta auslesen
+    ifstream fLoad("AsianElefant_CytochromeB.fasta", ofstream::in);
 
     while(!fLoad.eof())
     {
-    string strField;
+      Header temp_head;
+      Sequence temp_seq;
+      string strField;
+      getline(fLoad, strField);
 
-    getline(fLoad, strField, ';');
-        if(!strField.empty())
+        if(strField[0] == '>')
         {
-        string name = strField;
+          while(!strField[0])
+            getline(fLoad, strField, '|');
+            string i_ncbi = strField;
+            temp_head.setNCBI(i_ncbi);
+          
+          getline(fLoad, strField, '[');
+          string i_name = strField;
+          temp_head.setName(i_name);
 
-        getline(fLoad, strField, '\n');
-        int age;
-        istringstream(strField) >> age;
+          getline(fLoad, strField, ']');
+          string i_species = strField;
+          temp_head.setSpecies(i_species);
         }
-        fLoad.close();
-    }
 
-      //In das File schreiben
+        while(!strField.empty())
+          {
+            temp_seq.addSequence(strField);
+          }
+        fLoad.close();
+    
+    Read read(temp_head, temp_seq);
+
+    //In ein .txt File einlesen
     ofstream fSave("Reads.txt", ofstream::out);
-    fSave << "NONE"; //Reads
+
+    fSave << read;
     fSave.close();
+    }
 
     return 0;
 }

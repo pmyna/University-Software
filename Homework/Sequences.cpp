@@ -1,44 +1,27 @@
-#include <ostream>
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
-//#include "Sequences.h"
+#include "Sequences.h"
 using namespace std;
 
-class Header{
-    public:
-        Header(const string &i_ncbi, int i_id, string &i_name, string &i_species):
-        ncbi(i_ncbi), id_number(i_id), name(i_name), species(i_species){}
+Header::Header(){}
 
-    private:
-        string ncbi;
-        int id_number;
-        string name;
-        string species;
+void Header::setNCBI(const string &i_ncbi){ ncbi.append(i_ncbi); }
+void Header::setName(const string &i_name){ name = i_name; }
+void Header::setSpecies(const string &i_species){ species=i_species; }
 
-    string getNCBI() const{return ncbi;}
-    int getID() const{return id_number;}
-    string getName() const{return name;}
-    string getSpecies() const{return species;}
-};
+string Header::getNCBI() const {return ncbi;}
+string Header::getName() const {return name;}
+string Header::getSpecies() const {return species;}
+ 
 
-class Sequence{
-    public:
-      Sequence(const string &i_seq):
-        seq(i_seq){}
+Sequence::Sequence(){}
+void Sequence::addSequence(const string &i_seq){seq.append(i_seq);}
 
-    private:
-        string seq;
-    
-    string getSeq() const {return seq;}
-};
 
-class Read{
-    public:
-        Read(const Header &head, const Sequence &seq):
-            header(head), seq(seq){}
+Read::Read(const Header &head, const Sequence &seq):
+            read_header(head), read_seq(seq){}
 
-    private:
-        Header header;
-        Sequence seq;
-};
+string Read::getHeader(){cout << read_header;}
+string Read::getSequence(){cout << read_seq;}
