@@ -4,6 +4,13 @@
 #include "Sequences.h"
 using namespace std;
 
+/* 
+-) Compilieren nicht möglich: 
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation) 
+-) Programm kann nicht getestet werden; 
+-) Debugging startet ebenfalls nicht;
+*/
 
 int main()
 {
@@ -38,13 +45,11 @@ int main()
             temp_seq.addSequence(strField);
           }
         fLoad.close();
-    
-    Read read(temp_head, temp_seq);
 
     //In ein .txt File einlesen
     ofstream fSave("Reads.txt", ofstream::out);
 
-    fSave << read;
+    fSave << temp_head << temp_seq;
     fSave.close();
     }
 

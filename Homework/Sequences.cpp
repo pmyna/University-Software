@@ -20,8 +20,8 @@ Sequence::Sequence(){}
 void Sequence::addSequence(const string &i_seq){seq.append(i_seq);}
 
 
-Read::Read(const Header &head, const Sequence &seq):
+/*Read::Read(const Header &head, const Sequence &seq):
             read_header(head), read_seq(seq){}
 
-string Read::getHeader(){cout << read_header;}
-string Read::getSequence(){cout << read_seq;}
+string Read::getHeader(){return read_head);} //Wie Header als string returnen?
+string Read::getSequence(){return read_seq;}*/

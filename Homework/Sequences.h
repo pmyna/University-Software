@@ -25,7 +25,6 @@ ostream &operator<<(ostream &o, Header &i_head){
     return o << "NCBI: " << i_head.getNCBI() << '\n' << "Name: " << i_head.getName() << '\n' << "Spezies: " << i_head.getSpecies() << '\n';
 }
 
-
 class Sequence{
     public:
       Sequence();
@@ -41,13 +40,18 @@ ostream &operator<<(ostream &o, Sequence &i_seq){
     return o << "Sequence: " << i_seq << '\n';
 }
 
+// Idee: Header & zugehörige Sequence als ein Read zu speichern und gemeinsam an das .txt File übergeben und dort einlesen
+// Scheitere am Auslesen der Klassen von Read, da ein string übergeben werden muss
+// Idee 2: Reads als Liste von Vectoren mit Header/Sequences -> gleiches Problem 
+
+/* 
 class Read{
     public:
         Read(const Header &head, const Sequence &seq);
         
     
-    string getHeader();
-    string getSequence();
+    string/Header getHeader();
+    string/Sequence getSequence();
         
     private:
         Header read_header;
@@ -56,6 +60,6 @@ class Read{
 
 ostream &operator<<(ostream &o, Read &i_read){
     return o << i_read.getHeader() << '\n' << i_read.getSequence() << '\n';
-}
+}*/
 
 #endif
