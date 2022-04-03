@@ -3,6 +3,9 @@
 #include<iostream>
 using namespace std;
 
+// Deklaration & Definition
+// Kompilierung funktionert mit diesem File! Yay!
+
 class Header{
     public:
         Header(){}

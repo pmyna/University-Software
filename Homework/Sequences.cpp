@@ -1,7 +1,7 @@
 // Idee: Header & zugehörige Sequence als ein Read zu speichern und gemeinsam an das .txt File übergeben und dort einlesen
 // Scheitere am Auslesen von Reads, da ein string übergeben werden muss und Reads als Header/Sequence definiert sind
 // Verwefen der Idee Reads
-// Verwerfen der Sequences.h und Sequences.cpp, da nicht kompilierbar [ld: symbol(s) not found for architecture x86_64 clang: error: linker command failed with exit code 1 (use -v to see invocation)]
+// Verwerfen der Sequences.h und Sequences.cpp, da nicht kompilierbar [ld: symbol(s) not found for architecture x86_64 clang: error: linker command failed with exit code 1 (use -v to see invocation)]git a
 
 /* VERWORFEN
 
