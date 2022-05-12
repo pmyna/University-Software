@@ -18,7 +18,11 @@ int main() {
     cout << "Derzeit sind " << Student::count << " Studenten inskribiert und " << Professor::count
          << " Professoren angestellt." << endl;
 
+    try{
         Studium::get_stdStudium(100)->print();
+        Studium::get_stdStudium(400)->print();
+    } catch(const char *e) {cerr << e << endl;}
+
 
     return 0;
 }

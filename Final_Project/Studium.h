@@ -4,7 +4,7 @@
 #include <iostream>
 #include <utility>
 #include <vector>
-#include <exception>
+//#include <exception>
 #include "Vorlesung.h"
 
 using namespace std;
@@ -29,12 +29,7 @@ public:
     string get_bez() const{return Bezeichnung;}
     string get_instbez() const {return Institut;}
 
-    static Studium *get_stdStudium(const int &k){
-        init_Studium();
-        for(auto *pStudium : stdStudien){
-            if(pStudium->get_kennzahl() == k){return pStudium;}}
-            throw invalid_argument("Error");
-    }
+    static Studium *get_stdStudium(const int &k);
 
     // Setters
     void set_bez(const string &bez){Bezeichnung=bez;}
