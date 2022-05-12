@@ -3,7 +3,7 @@
 #include "Studium.h"
 
 int main() {
-    Vorlesung EP(100, Vorlesung::Semester::SS, 30, "Einführung in Programmieren", Vorlesung::Type::UE, 10);
+    Vorlesung EP(100, Vorlesung::Semester::SS, 10, "Einführung in Programmieren", Vorlesung::Type::UE, 10);
     Student moritz("Moritz", "Hadinger");
     //moritz.set_semester(7);
     //moritz.anmeldung(EP);
@@ -19,8 +19,8 @@ int main() {
          << " Professoren angestellt." << endl;
 
     try{
+        Studium::get_stdStudium(100)->add_VO(EP);
         Studium::get_stdStudium(100)->print();
-        Studium::get_stdStudium(400)->print();
     } catch(const char *e) {cerr << e << endl;}
 
 

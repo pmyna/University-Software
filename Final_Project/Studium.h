@@ -36,7 +36,7 @@ public:
     void set_instbez(const string &inst_bez){Institut=inst_bez;}
     void add_VO(const vector<Vorlesung>&VO_Liste){
         for(const auto& v : VO_Liste){Inst_Vorlesungen.push_back(v);}}
-    void add_VO(const Vorlesung& VO){ Inst_Vorlesungen.push_back(VO);}
+    void add_VO(const Vorlesung& VO){Inst_Vorlesungen.push_back(VO);}
 
     // Check Duplicates
     // ---- implement ----
@@ -46,6 +46,7 @@ public:
         cout << "Kennzahl: " << get_kennzahl() << endl;
         cout << "Bezeichnung: " << get_bez() << endl;
         cout << "Institut: " << get_instbez() << endl;
+        for (const Vorlesung& v: Inst_Vorlesungen){cout << '[' << v << ']' << endl;}
     }
 
 private:
@@ -66,7 +67,6 @@ private:
                 stdStudien.push_back(new_Studium);}
         }
     }
-
 };
 
 #endif

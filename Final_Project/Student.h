@@ -51,7 +51,7 @@ public:
             cout << Matrikelnummer << " wurde zu " << VO << " angemeldet" << endl;}
     }
 
-    //Abmeldung von einer VO
+    // Abmeldung von einer VO
     void abmeldung(Vorlesung &VO){
         if(!Student::aktiv){
             cout << "Abmeldung nicht möglich > Student inaktiv!" << endl;}
@@ -70,7 +70,7 @@ public:
         out << "Status: " << get_status() << endl;
         out << "Semester: " << get_semester() << endl;
         out << "Belegte Vorlesungen:" << endl;
-        for (Vorlesung i: belegt_VO){out << '[' << i << ']' << endl;}
+        for (const Vorlesung& i: belegt_VO){out << '[' << i << ']' << endl;}
         return out;
     }
 };
