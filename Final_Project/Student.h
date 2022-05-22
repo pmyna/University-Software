@@ -31,9 +31,11 @@ public:
 
     // Setter
     void set_semester(const int& sem){Semester=sem;}
+    void set_status(const bool& stat){aktiv=stat;}
 
+    // Check if Student angemeldet
     bool is_in(Vorlesung &VO){
-    for (auto i : belegt_VO){
+    for (const auto& i : belegt_VO){
         if (i == VO){return true;}}
         return false;}
 
@@ -48,7 +50,8 @@ public:
         if(Student::aktiv && !is_in(VO) && !VO.is_full()){
             belegt_VO.push_back(VO);
             VO.new_entry();
-            cout << Matrikelnummer << " wurde zu " << VO << " angemeldet" << endl;}
+            cout << Matrikelnummer << " wurde zu " << VO << " angemeldet" << endl;
+            VO.print_capacity();}
     }
 
     // Abmeldung von einer VO
@@ -58,9 +61,10 @@ public:
         if(!is_in(VO)){
             cout << "Abmeldung nicht möglich > Student nicht angemeldet!" << endl;}
         if(Student::aktiv && is_in(VO)){
-            remove(belegt_VO.begin(), belegt_VO.end(), VO);
+            belegt_VO.erase(remove(belegt_VO.begin(), belegt_VO.end(), VO));
             VO.delete_entry();
-            cout << Matrikelnummer << " wurde von " << VO << " abgemeldet" << endl;}
+            cout << Matrikelnummer << " wurde von " << VO << " abgemeldet" << endl;
+            VO.print_capacity();}
     }
 
     // Print Function
@@ -70,6 +74,7 @@ public:
         out << "Status: " << get_status() << endl;
         out << "Semester: " << get_semester() << endl;
         out << "Belegte Vorlesungen:" << endl;
+        if(belegt_VO.empty()){out << "NONE";}
         for (const Vorlesung& i: belegt_VO){out << '[' << i << ']' << endl;}
         return out;
     }

@@ -1,10 +1,10 @@
 #ifndef STUDIUM_H
 #define STUDIUM_H
 
+#pragma once
 #include <iostream>
 #include <utility>
 #include <vector>
-//#include <exception>
 #include "Vorlesung.h"
 
 using namespace std;
@@ -47,6 +47,7 @@ public:
         cout << "Bezeichnung: " << get_bez() << endl;
         cout << "Institut: " << get_instbez() << endl;
         for (const Vorlesung& v: Inst_Vorlesungen){cout << '[' << v << ']' << endl;}
+        cout << '\n';
     }
 
 private:

@@ -1,3 +1,2 @@
 #include "Vorlesung.h"
-
-int Vorlesung::entries = 0;
+int Vorlesung::belegt = 0;
