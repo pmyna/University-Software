@@ -43,7 +43,7 @@ public:
     void set_semester(Semester ws_ss){ws_or_ss = ws_ss;}
     void set_vonummer(int vonummer){VO_Nummer=vonummer;}
     void set_voname(string voname){VO_Name=move(voname);}
-    void set_max(int m){max_Studenten=m;}
+    void set_max(int m){max_Studenten=m; current_Studenten=m;}
 
     // Print VO
     ostream& print(ostream& out) const{

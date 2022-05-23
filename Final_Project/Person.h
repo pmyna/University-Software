@@ -13,8 +13,8 @@ class Person{
     string Nachname;
     string Geburtstag;
 public:
-    Person(string, string);
-    Person(string, string, string);
+    Person(const string&, const string&);
+    Person(const string&, const string&, string);
     ~Person();
 
     //getter

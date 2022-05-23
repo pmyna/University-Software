@@ -1,18 +1,19 @@
 #include "Person.h"
 #include <iostream>
+#include <utility>
 using namespace std;
 
-Person::Person(string vor, string nach): Vorname(vor), Nachname(nach), Geburtstag("01.01.1900"){
+Person::Person(const string& vor, const string& nach): Vorname(vor), Nachname(nach), Geburtstag("01.01.1900"){
     if (vor.empty() || nach.empty())
         throw runtime_error("Name darf nicht leer sein!");
 }
 
-Person::Person(string vor, string nach, string geb): Vorname(vor), Nachname(nach), Geburtstag(geb){
+Person::Person(const string& vor, const string& nach, string geb): Vorname(vor), Nachname(nach), Geburtstag(std::move(geb)){
         if (vor.empty() || nach.empty())
             throw runtime_error("Name darf nicht leer sein!");
 }
 
-Person::~Person(){}
+Person::~Person()= default;
 
 string Person::get_Vorname() const{return Vorname;}
 string Person::get_Nachname() const {return Nachname;}

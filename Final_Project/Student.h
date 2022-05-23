@@ -15,8 +15,8 @@ public:
     static int count;
 
     // Constructor
-    Student(string vor, string nach, int sem=1, bool aktiv=true) : Person(move(vor), move(nach)), Semester{sem}, aktiv{aktiv}{Matrikelnummer = ID++; count++;}
-    Student(string vor, string nach, string geb, int sem=1, bool aktiv=true) : Person(move(vor), move(nach), move(geb)), Semester{sem}, aktiv{aktiv}{Matrikelnummer = ID++; count++;}
+    Student(const string& vor, const string& nach, int sem=1, bool aktiv=true) : Person(vor, nach), Semester{sem}, aktiv{aktiv}{Matrikelnummer = ID++; count++;}
+    Student(const string& vor, const string& nach, string geb, int sem=1, bool aktiv=true) : Person(vor, nach, move(geb)), Semester{sem}, aktiv{aktiv}{Matrikelnummer = ID++; count++;}
 
     // Destructor
     virtual ~Student(){count--;}

@@ -13,29 +13,30 @@ public:
     static int ID;
     static int count;
 
-    //Constructor
-    Professor(string vor, string nach, int inst) : Person(move(vor), move(nach)), Institut{inst}{
+    // Constructor
+    Professor(const string& vor, const string& nach, int inst) : Person(vor, nach), Institut{inst}{
         Personalnummer = ID++; count++;
     }
-    Professor(string vor, string nach, string geb, int inst) : Person(move(vor), move(nach), move((geb))), Institut{inst}{
+    Professor(const string& vor, const string& nach, string geb, int inst) : Person(vor, nach, move((geb))), Institut{inst}{
         Personalnummer = ID++; count++;
     }
 
     //Destructor
     virtual ~Professor(){count--;}
 
-    //getter
+    // Getter
     int get_personalnr() const {return Personalnummer;}
     int get_institut() const {return Institut;}
 
-    //setter
+    // Setter
     void add_VO(const Vorlesung& VO){haelt_VO.push_back(VO);}
 
     ostream& print(ostream& out) const{
         out << "Name: " << Person::get_Vorname() << ' ' << Person::get_Nachname() << endl;
         out << "Personalnummer: " << get_institut() << get_personalnr() << endl;
         out << "Hält Vorlesungen: " << endl;
-        for (Vorlesung i: haelt_VO){out << '[' << i << ']' << endl;}
+        if(haelt_VO.empty()){out << "NONE";}
+        for (const Vorlesung& i: haelt_VO){out << '[' << i << ']' << endl;}
         return out;
     }
 };

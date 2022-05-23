@@ -34,12 +34,17 @@ public:
     // Setters
     void set_bez(const string &bez){Bezeichnung=bez;}
     void set_instbez(const string &inst_bez){Institut=inst_bez;}
-    void add_VO(const vector<Vorlesung>&VO_Liste){
-        for(const auto& v : VO_Liste){Inst_Vorlesungen.push_back(v);}}
     void add_VO(const Vorlesung& VO){Inst_Vorlesungen.push_back(VO);}
 
+    // Operator Overload : Compare Studium
+    bool operator==(const Studium&s) const{
+        return Kennzahl == s.Kennzahl && Bezeichnung == s.Bezeichnung && Institut == s.Institut;}
+
     // Check Duplicates
-    // ---- implement ----
+    static void check_unique(const Studium *s){
+        for(auto i : stdStudien){
+            if(*i == *s){delete i;}}
+    }
 
     // Print Function
     void print() const{
@@ -59,12 +64,14 @@ private:
             StudInfo stdStudienInfo[] =
                     {{100, "Informatik","Institute for Computational Engineering"},
                     { 200,"Molekulare Biologie", "Institute of Microbiology and Genetics"},
-                    { 300,"Betriebswirtschaft",  "Institute of Business and Management"}};
+                    { 300,"Betriebswirtschaft",  "Institute of Business and Management"},
+                     { 300,"Betriebswirtschaft",  "Institute of Business and Management"}};
 
             for(auto &info:stdStudienInfo)
             {auto *new_Studium = new Studium(info.kennzahl);
                 new_Studium->set_bez(info.bez);
                 new_Studium->set_instbez(info.inst_bez);
+                check_unique(new_Studium);
                 stdStudien.push_back(new_Studium);}
         }
     }
