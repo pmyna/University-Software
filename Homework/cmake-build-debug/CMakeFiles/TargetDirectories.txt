@@ -1,3 +1,0 @@
-/Users/Mina/Dropbox/Master/Softwareentwicklung/Homework/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/Mina/Dropbox/Master/Softwareentwicklung/Homework/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/Mina/Dropbox/Master/Softwareentwicklung/Homework/cmake-build-debug/CMakeFiles/fasta_io.dir
